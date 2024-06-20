@@ -1,8 +1,13 @@
 import "~/styles/globals.css";
-
+import "@uploadthing/react/styles.css"
 import { ClerkProvider } from "@clerk/nextjs";
-import { GeistSans } from "geist/font/sans";
+
 import { TopNav } from "./_components/topnav";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+import { ourFileRouter } from "./api/uploadthing/core";
+
+
 
 export const metadata = {
   title: "T3 Gallery",
@@ -21,6 +26,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en">
+      <NextSSRPlugin 
+        // Pass in the routerConfig from ourFileRouter, allows button to be prerendered
+        routerConfig={extractRouterConfig(ourFileRouter)}
+      />
       <body className="font-sans flex-col gap-4 flex">
         <TopNav />
         {children}
