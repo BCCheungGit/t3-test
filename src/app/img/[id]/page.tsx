@@ -14,6 +14,6 @@ export default function PhotoPage({
     if (Number.isNaN(idAsNumber)) throw new Error("Invalid photo ID");
 
     return (
-            <FullPageImageView id={idAsNumber} />
+        <FullPageImageView id={idAsNumber} />
     );
 }
