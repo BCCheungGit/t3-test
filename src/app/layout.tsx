@@ -27,18 +27,20 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <NextSSRPlugin 
-        // Pass in the routerConfig from ourFileRouter, allows button to be prerendered
-        routerConfig={extractRouterConfig(ourFileRouter)}
-      />
-      <body className="font-sans flex-col gap-4 flex">
-        <TopNav />
-        {children}
-        {modal}
-        <div id="modal-root" />
-      </body>
-    </html>
+      <html lang="en">
+        <NextSSRPlugin
+          // Pass in the routerConfig from ourFileRouter, allows button to be prerendered
+          routerConfig={extractRouterConfig(ourFileRouter)}
+        />
+        <body className="font-sans">
+        <div className="grid h-screen grid-rows-[auto,1fr]">
+              <TopNav />
+              <main className="overflow-y-scroll">{children}</main>
+              {modal}
+            </div>
+          <div id="modal-root" />
+        </body>
+      </html>
     </ClerkProvider>
   );
 }

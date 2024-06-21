@@ -1,5 +1,4 @@
 
-import { Modal } from "./modal";
 import FullPageImageView from "~/app/components/full-image-page";
 
 
