@@ -14,7 +14,7 @@
 - [x] Error management
 - [x] Routing and image page
 - [x] Shad UI components (toast)
-- [ ] Analytics (posthog)
+- [x] Analytics (posthog)
 - [ ] Delete button with server actions
 - [ ] Rate limiting (upstash)
 
