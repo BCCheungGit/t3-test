@@ -13,6 +13,7 @@
 - [x] Use Next/Image component
 - [x] Error management
 - [x] Routing and image page
+- [ ] Shad UI components (toast)
 - [ ] Delete button with server actions
 - [ ] Analytics (posthog)
 - [ ] Rate limiting (upstash)
