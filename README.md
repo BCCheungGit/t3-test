@@ -15,6 +15,6 @@
 - [x] Routing and image page
 - [x] Shad UI components (toast)
 - [x] Analytics (posthog)
-- [ ] Delete button with server actions
+- [x] Delete button with server actions
 - [ ] Rate limiting (upstash)
 
