@@ -6,7 +6,6 @@ import { deleteImage, getImage } from "~/server/queries";
 export default async function FullPageImageView(props: { id: number }) {
     
     const image = await getImage(props.id);
-
     const uploaderInfo = await clerkClient.users.getUser(image.userId)
 
     return (
@@ -24,7 +23,7 @@ export default async function FullPageImageView(props: { id: number }) {
 
         <div className="p-2">
           <div>Created On:</div>
-          <div>{image.createdAt.toLocaleDateString()}</div>
+          <div>{image.createdAt.toLocaleString()}</div>
         </div>
 
         <div className="p-2">

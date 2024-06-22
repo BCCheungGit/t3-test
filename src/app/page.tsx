@@ -10,6 +10,11 @@ export const dynamic = "force-dynamic";
 async function Images() {
 
   const images = await getMyImages();
+  if (images.length === 0) return (
+    <div className="w-full h-full text-2xl text-white text-center ">
+      You have no images
+    </div>
+  )
 
   return (
     <div className="flex flex-wrap justify-center p-4">

@@ -30,11 +30,13 @@ export const ourFileRouter = {
         name: file.name,
         url: file.url,
         userId: metadata.userId,
+        fileKey: file.key,
       })
     
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
       return { uploadedBy: metadata.userId };
     }),
+
 } satisfies FileRouter;
  
 export type OurFileRouter = typeof ourFileRouter;

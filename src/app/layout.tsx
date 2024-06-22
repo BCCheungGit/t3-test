@@ -35,7 +35,7 @@ export default function RootLayout({
           // Pass in the routerConfig from ourFileRouter, allows button to be prerendered
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
-        <body className="font-sans dark">
+        <body className="font-sans dark no-scrollbar">
         <div className="grid h-screen grid-rows-[auto,1fr]">
               <TopNav />
               <main className="overflow-y-scroll">{children}</main>

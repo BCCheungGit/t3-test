@@ -3,10 +3,9 @@ import { db } from "./db";
 import { auth } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
 import { images } from "./db/schema";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import analyticsServerClient from "./analytics";
-
+import { UTApi } from "uploadthing/server";
 
 export async function getMyImages() {
 
@@ -30,7 +29,7 @@ export async function getImage(id: number) {
     const image = await db.query.images.findFirst({
       where: (model, { eq }) => eq(model.id, id),
     });
-    if (!image) throw new Error("Image not found");
+    if (!image) redirect("/");
   
     if (image.userId !== user.userId) throw new Error("Unauthorized");
   
@@ -40,9 +39,13 @@ export async function getImage(id: number) {
 
 export async function deleteImage(id: number) {
     const user = auth();
+    const utapi = new UTApi();
+    // const delete_key = await db.query.images.findFirst({
+    //     where: (model, { eq }) => eq(model.id, id),
+    //     select: (model) => model.fileKey
+    // })
 
     if (!user.userId) throw new Error("Unauthorized");
-
 
     await db.delete(images).where(and(eq(images.id, id), eq(images.userId, user.userId)));
 
@@ -53,6 +56,7 @@ export async function deleteImage(id: number) {
             image_id: id,
         }
     })
-
+    await utapi.deleteFiles(String(id));
+    
     redirect("/");
 }
